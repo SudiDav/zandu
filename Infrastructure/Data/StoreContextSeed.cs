@@ -27,5 +27,7 @@ public class StoreContextSeed
             var products = JsonSerializer.Deserialize<List<Product>>(productsData);
             context.Products.AddRange(products);
         }
+
+        if (context.ChangeTracker.HasChanges()) await context.SaveChangesAsync();
     }
 }
